@@ -31,7 +31,7 @@
       </ul>
       <form class="d-flex">
         <% if logged_in?%>
-            <%= link_to current_user.username, path=user_path(current_user), class:"nav-link"%>
+            <%= "(Admin) " if current_user.admin %><%= link_to current_user.username, path=user_path(current_user), class:"nav-link"%>
             <%= link_to "Log Out", logout_path, class:"nav-link"%>
         <%else%>
             <%= link_to "Log In", login_path, class:"nav-link"%>

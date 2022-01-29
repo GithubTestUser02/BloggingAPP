@@ -1,6 +1,6 @@
 <div class="container">
     <h3><%= @user.username%>'s Profile</h3>
-    <% if logged_in? && @user==current_user %>
+    <% if logged_in? && (@user==current_user || current_user.admin?)%>
         <%= link_to "Edit", edit_user_path(@user),class:"btn btn-primary"%>
         <%= link_to "Delete", user_path(@user),data:{method: :delete},class:"btn btn-primary"%>
     <%end%>
