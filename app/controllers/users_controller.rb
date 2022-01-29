@@ -38,6 +38,7 @@ class UsersController < ApplicationController
 
     def destroy
         @user.destroy
+        session[:user_id]=nil
         flash[:notice]="User Deleted Successfully"
         redirect_to users_path
     end
