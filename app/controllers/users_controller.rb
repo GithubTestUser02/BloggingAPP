@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
      
     before_action :set_user,only:[:edit,:update,:show,:destroy]
+    before_action :require_user, except:[:index,:show,:new,:create]
+    before_action :require_same_user, except:[:index,:show,:new,:create]
 
     def show
         @articles=@user.articles
@@ -17,6 +19,7 @@ class UsersController < ApplicationController
     def create
         @user=User.new(user_params)
         if @user.save
+            session[:user_id]=@user.id
             flash[:notice]="User signed up successfully"
             redirect_to users_path
         else
@@ -51,5 +54,12 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:username,:email,:password,:password_confirmation)
+    end
+
+    def require_same_user
+        if !(current_user==@user)
+            flash[:alert]="You can edit or delete your own account"
+            redirect_to @user
+        end
     end
 end
