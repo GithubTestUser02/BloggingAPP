@@ -10,28 +10,44 @@
           <%= link_to "About", about_path, class:"nav-link"%>
         </li>
         <li class="nav-item">
-            <%= link_to "Articles", articles_path, class:"nav-link"%>
+            <%= link_to "Bloggers", users_path, class:"nav-link"%>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Articles
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to "View Artciles",articles_path, class:"dropdown-item"%></li>
             <% if logged_in?%>
               <li><%= link_to "Create Article", new_article_path, class:"dropdown-item"%></li>
             <%end%>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to "View Categories",categories_path, class:"dropdown-item"%></li>
+            <% if logged_in? && current_user.admin?%>
+              <li><%= link_to "Create Category", new_category_path, class:"dropdown-item"%></li>
+            <%end%>
+          </ul>
         </li>
       </ul>
       <form class="d-flex">
         <% if logged_in?%>
-            <%= "(Admin) " if current_user.admin %><%= link_to current_user.username, path=user_path(current_user), class:"nav-link"%>
+            <li class="nav-item dropdown list-unstyled">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= "(Admin) " if current_user.admin %><%= current_user.username%>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><%= link_to "View Profile",user_path(current_user), class:"dropdown-item"%></li>
+                <li><%= link_to "Edit Profile", edit_user_path(current_user), class:"dropdown-item"%></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><%= link_to "Delete Profile", user_path(current_user),data:{method: :destroy}, class:"dropdown-item"%></li>
+              </ul>
+            </li>
             <%= link_to "Log Out", logout_path, class:"nav-link"%>
         <%else%>
             <%= link_to "Log In", login_path, class:"nav-link"%>
