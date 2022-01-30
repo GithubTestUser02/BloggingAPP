@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <%= form_for @article do |f| %>
+    <%= form_for @article do |f|%>
         <% if @article.errors.any?%>
             <ul>
                 <% @article.errors.full_messages.each do |msg|%>
@@ -26,7 +26,7 @@
         </div>
 
         <div>
-            <%= f.submit%>
+            <%= f.submit class:"btn btn-dark btn-block mt-4 text-center"%>
         </div>
     <% end %>
 </div>

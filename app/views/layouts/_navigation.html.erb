@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <%= link_to "BlogAPP", root_path, class:"navbar-brand"%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
       <form class="d-flex">
         <% if logged_in?%>
             <li class="nav-item dropdown list-unstyled">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <%= "(Admin) " if current_user.admin %><%= current_user.username%>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -48,10 +48,10 @@
                 <li><%= link_to "Delete Profile", user_path(current_user),data:{method: :destroy}, class:"dropdown-item"%></li>
               </ul>
             </li>
-            <%= link_to "Log Out", logout_path, class:"nav-link"%>
+            <%= link_to "Log Out", logout_path, class:"nav-link text-white border border-white rounded ml-4"%>
         <%else%>
-            <%= link_to "Log In", login_path, class:"nav-link"%>
-            <%= link_to "Sign Up", new_user_path, class:"nav-link"%>
+            <%= link_to "Log In", login_path, class:"nav-link text-white border border-white rounded mr-4"%>
+            <%= link_to "Sign Up", new_user_path, class:"nav-link text-white border border-white rounded"%>
         <%end%>
       </form>
     </div>

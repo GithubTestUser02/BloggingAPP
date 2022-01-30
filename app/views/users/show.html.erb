@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container text-center">
     <h3><%= @user.username%>'s Profile</h3>
     <% if logged_in? && (@user==current_user || current_user.admin?)%>
-        <%= link_to "Edit", edit_user_path(@user),class:"btn btn-primary"%>
-        <%= link_to "Delete", user_path(@user),data:{method: :delete},class:"btn btn-primary"%>
+        <%= link_to "Edit", edit_user_path(@user),class:"btn btn-dark btn-block mb-4"%>
+        <%= link_to "Delete", user_path(@user),data:{method: :delete},class:"btn btn-dark btn-block mb-4"%>
     <%end%>
     <h3>Articles</h3>
     <%= render 'articles/article'%>

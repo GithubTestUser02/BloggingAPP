@@ -2,10 +2,10 @@
     <h1>Displaying Category</h1>
     <p><strong>Category Name: </strong><%= @category.name%></p>
     <% if logged_in? && current_user.admin?%>
-        <%= link_to "Edit", edit_category_path(@category),class:"btn btn-primary"%>
-        <%= link_to "Delete", category_path(@category),data:{method: :delete},class:"btn btn-primary"%>
+        <%= link_to "Edit", edit_category_path(@category),class:"btn btn-dark btn-block"%>
+        <%= link_to "Delete", category_path(@category),data:{method: :delete},class:"btn btn-dark btn-block"%>
     <%end%>
     <h2>Articles</h2>
     <%= render 'articles/article'%>
-    <%= link_to "Back to Categories", categories_path,class:"btn btn-primary"%>
+    <%= link_to "Back to Categories", categories_path,class:"btn btn-dark btn-block"%>
 </div>

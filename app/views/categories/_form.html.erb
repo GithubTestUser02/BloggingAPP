@@ -8,12 +8,14 @@
             </ul>
         <% end%>
         <div>
-            <%= f.label :name, style:"display:block", class:"form-label"%>
+            <%= f.label :name, style:"display:block", class:"form-label label-text"%>
             <%= f.text_field :name, class:"form-control", id:"exampleFormControlTextarea1"%>
         </div>
 
         <div>
-            <%= f.submit%>
+            <%= f.submit class:"btn btn-dark btn-block mt-4"%>
         </div>
+
+        <%= link_to "Back to Categories", categories_path,class:"btn btn-dark btn-block mt-4"%>
     <% end %>
 </div>
