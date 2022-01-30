@@ -2,6 +2,11 @@
     <div class="card text-center mb-5">
         <div class="card-header">
             <%= link_to article.user.username, user_path(article.user)%>
+            <div>
+                <% article.categories.each do |category|%>
+                    <span class="badge bg-primary"><%= category.name%></span>
+                <%end%>
+            </div>
         </div>
         <div class="card-body">
             <h5 class="card-title"><%= article.title%></h5>
